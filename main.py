@@ -3,12 +3,18 @@ import torch
 import numpy 
 import itertools
 
-
+import typing 
 
 import pickle 
 
 
 cayleys = []
+
+
+def transPerm(x : torch.Tensor, perm : list) -> torch.Tensor:
+    x=x[perm,:]
+    x=x[:,perm]
+    return x
 
 directory = os.path.abspath("/home/fennecs/Documents/CayleyML")
 for root,dirs,files in os.walk(directory):
@@ -22,12 +28,13 @@ for root,dirs,files in os.walk(directory):
 
 normalised = list(map(torch.nn.functional.normalize,cayleys))
 perms = list(itertools.permutations(range(8)))
-colperms = itertools.chain.from_iterable(map(lambda n: map(lambda p: n[p,:], perms), normalised))
 
+#cayleyPerms = itertools.chain.from_iterable(map(lambda n: map(lambda p: n[p,:], perms), normalised))
+cayleyPerms = itertools.chain.from_iterable(map(lambda n: map(lambda p: transPerm(n,p), perms), normalised))
 
 
 f = open("latins.p","rb")
 latins = map(lambda x: torch.nn.functional.normalize(torch.tensor(x)),pickle.load(f))
 f.close 
 
-print(len(list(colperms)))
+print(len(list(latins)))
