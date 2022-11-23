@@ -21,7 +21,6 @@ def getData():
     f.close()
     cayleyClass = itertools.repeat(torch.Tensor([1,0]), 201600)
 
-
     f = open("latins.p","rb")
     latins = map(lambda x: torch.nn.functional.normalize(torch.tensor(x)),pickle.load(f))
     f.close 
