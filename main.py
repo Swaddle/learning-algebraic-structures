@@ -49,7 +49,7 @@ trainDataloader = DataLoader(trainSplit, batch_size=64, shuffle=True)
 valDataloader = DataLoader(valSplit, batch_size=64, shuffle=True)
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
+optimizer = optim.SGD(model.parameters(), lr=0.01)
 
 start_time = time.time()
 
@@ -72,6 +72,6 @@ for epoch in range(300):
         if i % 2000 == 1999:    # print every 2000 mini-batches
             
             total_time = time.time() - start_time
-            total_time_str = str(datetime.timedelta(seconds=int(total_time)))
+            total_time_str = str(datetime.timedelta(seconds=int(total_time))) 
             print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2000:.3f} training time: {total_time_str}')
             running_loss = 0.0

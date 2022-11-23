@@ -9,5 +9,7 @@ pkgs.mkShell {
     pkgs.python310Packages.pip
     pkgs.python310Packages.virtualenv
     pkgs.sage
+    pkgs.git 
+    pkgs.git-lfs
   ];
 }
