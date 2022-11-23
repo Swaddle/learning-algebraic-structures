@@ -83,3 +83,5 @@ for epoch in range(300):
             print(f'[{epoch + 1}, {i + 1:5d}] av loss: {runningLoss/2000.0} av val: {runningVal/2000.0} training time: {totalTimeStr}')
             runningLoss = 0.0
             runningVal = 0.0
+    
+torch.save(model.state_dict(), "model.pt")
