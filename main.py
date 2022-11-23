@@ -30,5 +30,4 @@ f = open("latins.p","rb")
 latins = map(lambda x: torch.nn.functional.normalize(torch.tensor(x)),pickle.load(f))
 f.close 
 
-print(list(latins)[1])
-print(list(colperms)[1])
+print(len(list(colperms)))
