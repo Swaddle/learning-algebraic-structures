@@ -52,8 +52,8 @@ optimizer = optim.SGD(model.parameters(), lr=0.01)
 
 startTime = time.time()
 
- # loop over the dataset 300 times
-for epoch in range(300): 
+ # loop over the dataset 20 times
+for epoch in range(20): 
 
     runningLoss = 0.0
     runningVal = 0.0
